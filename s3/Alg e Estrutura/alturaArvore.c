@@ -47,6 +47,7 @@ int alturaArvore(No* raiz){
             return alturaDireita + 1;
         }
     }
+    return altura;
 }
 
 int main(){

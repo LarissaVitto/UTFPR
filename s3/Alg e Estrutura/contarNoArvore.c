@@ -37,7 +37,7 @@ void imprimir(No* raiz){ //Pré-ordem
 }
 
 void contaNo(No *raiz){
-    if(raiz != NULL){
+    if(raiz != NULL){ // já havia feito esse exercício aula passada mas não usei recursividade
         contaNo(raiz->esquerda);
         contaNo(raiz->direita);
         qtd++;

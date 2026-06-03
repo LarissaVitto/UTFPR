@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int qtd = 0;
+
 typedef struct no{
     int valor;
     struct no *esquerda;
@@ -26,11 +28,21 @@ No* inserirNo(No* raiz, int valor){
     return raiz;
 }
 
-void mostra_chaves_decrescentes(No* raiz){ //Ao contrario
+void imprimir(No* raiz){ //Pré-ordem
     if(raiz != NULL){
-        mostra_chaves_decrescentes(raiz->direita);
         printf("%d\n", raiz->valor);
-        mostra_chaves_decrescentes(raiz->esquerda);
+        imprimir(raiz->esquerda);
+        imprimir(raiz->direita);
+    }
+}
+
+void contaFolha(No *raiz){
+    if(raiz != NULL){
+        contaFolha(raiz->esquerda);
+        contaFolha(raiz->direita);
+        if(raiz->esquerda == NULL && raiz->direita == NULL){
+            qtd++;
+        }
     }
 }
 int main(){
@@ -42,6 +54,8 @@ int main(){
     inserirNo(raiz, 8);
     inserirNo(raiz, 20);
     inserirNo(raiz, 7);
-    mostra_chaves_decrescentes(raiz);
+    imprimir(raiz);
+    contaFolha(raiz);
+    printf("Quantidade de folhas: %d\n", qtd);
     return 0;
 }
