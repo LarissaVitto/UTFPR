@@ -2,6 +2,7 @@
 #include<stdlib.h>
 
 void insertionSort(float vet[], int n) {
+    int cont = 0;
     for (int i = 1; i < n; i++) {
         float aux = vet[i];
         int j = i - 1;
@@ -14,10 +15,13 @@ void insertionSort(float vet[], int n) {
             printf("vet[%d]: %f \n", k, vet[k]);
         }
         printf("\n");
+        cont++;
     }
+    printf("Iteracoes: %d\n", cont);
 }
 
 void selectionSort(float vet[], int n) {
+    int cont = 0;
     for (int i = 0; i < n - 1; i++) {
         int min = i;
         for (int j = i + 1; j < n; j++) {
@@ -32,7 +36,9 @@ void selectionSort(float vet[], int n) {
             printf("vet[%d]: %f \n", k, vet[k]);
         }
         printf("\n");
+        cont++;
     }
+    printf("Iteracoes: %d\n", cont);
 }
 
 
