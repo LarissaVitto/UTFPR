@@ -1,15 +1,28 @@
-package trabalhoPOO;
+package cch.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Cidade")
 public class Cidade {
-    //atributos
+    //Atributos
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nome;
     private String UF;
 
-    //construtor
+    //Construtor
     public Cidade(String nome, String uF) {
         this.nome = nome;
         UF = uF;
     }
+    
+    public Cidade () {}
     
     //Getters e Setters
     public String getNome() {
@@ -26,6 +39,10 @@ public class Cidade {
 
     public void setUF(String UF) {
         this.UF = UF;
+    }
+    
+    public Long getId() {
+        return id;
     }
 
 }
