@@ -38,17 +38,28 @@ public class ClienteDAO {
           }
     }
     
+    public List<Cliente> buscarTodos () {
+         HibernateUtil hibernate = new HibernateUtil();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            String hql = "FROM Cliente";
+            Query<Cliente> query = session.createQuery(hql, Cliente.class);
+            
+            return query.list();
+        } catch (Exception e) {
+            return new ArrayList<>(); 
+        }
+    
+    }
+    
     public List<Cliente> buscarPorNome(String nome) {
         HibernateUtil hibernate = new HibernateUtil();
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            // Buscando na classe Cliente (cuidado com o nome da classe: deve ser exatamente como está no seu modelo)
             String hql = "FROM Cliente WHERE nome LIKE :nome";
             Query<Cliente> query = session.createQuery(hql, Cliente.class);
             query.setParameter("nome", "%" + nome + "%");
             
             return query.list();
         } catch (Exception e) {
-            // Opcional: Logger.getLogger(ClienteDAO.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
             return new ArrayList<>(); 
         }
     }

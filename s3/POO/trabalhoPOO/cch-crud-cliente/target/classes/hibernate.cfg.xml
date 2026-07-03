@@ -31,6 +31,7 @@
         </property>
         
         <mapping class="cch.model.Cidade"/>
+        <mapping class="cch.model.Cliente"/>
 
         <!-- Adicionar aqui as classes de modelo -->
         <!--<mapping class="cch.model.Produto"/>--> 

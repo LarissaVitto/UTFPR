@@ -49,6 +49,19 @@ public class CidadeDAO {
         }   
     };
     
+    public List<Cidade> buscarTodos () {
+        HibernateUtil hibernate = new HibernateUtil();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            String hql = "FROM Cidade";
+            Query<Cidade> query = session.createQuery(hql, Cidade.class);
+            
+            return query.list();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+    
     public List<Cidade> buscarPorNome(String nome) {
         HibernateUtil hibernate = new HibernateUtil();
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {

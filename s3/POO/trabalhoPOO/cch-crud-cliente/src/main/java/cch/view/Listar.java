@@ -30,9 +30,36 @@ public class Listar extends javax.swing.JFrame {
             jLabelTituloPesquisa.setText("PESQUISAR CIDADES");
             modelo.setColumnIdentifiers(new Object[]{"Código", "Nome", "UF"});
             
+            CidadeDAO cidadesDAO = new CidadeDAO();
+            List<Cidade> cidades = cidadesDAO.buscarTodos();
+            
+            if (cidades.isEmpty()) { // VERIFICA LISTA VAZIA
+                errorMsg.setText("Nenhum resultado encontrado para cidades.");
+                errorMsg.setForeground(java.awt.Color.BLUE);
+            } else {
+                for (Cidade c : cidades) {
+                    modelo.addRow(new Object[]{c.getId(), c.getNome(), c.getUF()});
+                }
+            } 
+            
         } else if ("CLIENTE".equals(tipoOrigemTela)) {
             jLabelTituloPesquisa.setText("PESQUISAR CLIENTES");
-            modelo.setColumnIdentifiers(new Object[]{"Código", "Nome", "CPF", "Telefone"});
+            modelo.setColumnIdentifiers(new Object[]{"Código", "Nome", "CPF", "Cidade", "Telefone", "Email"});
+            
+            ClienteDAO clientesDAO = new ClienteDAO();
+            List<Cliente> clientes = clientesDAO.buscarTodos();
+            
+            if (clientes.isEmpty()) { // VERIFICA LISTA VAZIA
+                errorMsg.setText("Nenhum resultado encontrado para clientes.");
+                errorMsg.setForeground(java.awt.Color.BLUE);
+            } else {
+                for (Cliente cli : clientes) {
+                    String cidade = (cli.getCidade() != null)
+                    ? cli.getCidade().getNome() + " - " + cli.getCidade().getUF()
+                    : null;
+                    modelo.addRow(new Object[]{cli.getId(), cli.getNome(), cli.getCpf(), cidade, cli.getTelefone(), cli.getEmail()});
+                }
+            }
         }
     }
 
@@ -50,7 +77,8 @@ public class Listar extends javax.swing.JFrame {
         jButtonExcluir = new javax.swing.JButton();
         jButtonAlterar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jLabelTituloPesquisa.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabelTituloPesquisa.setText("TELA DE PESQUISA");
@@ -165,24 +193,22 @@ public class Listar extends javax.swing.JFrame {
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
         String termoPesquisa = jTextFieldTermoPesquisado.getText().trim();
-        
-        if (termoPesquisa.isEmpty() || termoPesquisa.equals("Insira o termo de pesquisa...")) {
-            errorMsg.setText("Por favor, digite um termo para a pesquisa.");
-            errorMsg.setForeground(java.awt.Color.RED);
-            return;
-        }
-        
         errorMsg.setText("");
           
         DefaultTableModel modelo = (DefaultTableModel) jTableResultados.getModel();
         modelo.setNumRows(0); 
-
+        
         if ("CIDADE".equals(this.tipoOrigemTela)) { 
             modelo.setColumnIdentifiers(new Object[]{"Código", "Nome", "UF"});
             CidadeDAO cidadeDao = new CidadeDAO();
-            List<Cidade> cidades = cidadeDao.buscarPorNome(termoPesquisa);
+            List<Cidade> cidades = null;
             
-            
+            if (termoPesquisa.isEmpty() || termoPesquisa.equals("Insira o termo de pesquisa...")) {
+                cidades = cidadeDao.buscarTodos();
+            } else {
+                cidades = cidadeDao.buscarPorNome(termoPesquisa);
+            }
+        
             if (cidades.isEmpty()) { // VERIFICA LISTA VAZIA
                 errorMsg.setText("Nenhum resultado encontrado para cidades.");
                 errorMsg.setForeground(java.awt.Color.BLUE);
@@ -192,16 +218,26 @@ public class Listar extends javax.swing.JFrame {
                 }
             }   
         } else if ("CLIENTE".equals(this.tipoOrigemTela)) {
-            modelo.setColumnIdentifiers(new Object[]{"Código", "Nome", "CPF", "Telefone"});
+            modelo.setColumnIdentifiers(new Object[]{"Código", "Nome", "CPF", "Cidade", "Telefone", "Email"});
             ClienteDAO clienteDao = new ClienteDAO();
-            List<Cliente> clientes = clienteDao.buscarPorNome(termoPesquisa);
+            
+            List<Cliente> clientes = null;
+            
+            if (termoPesquisa.isEmpty() || termoPesquisa.equals("Insira o termo de pesquisa...")) {
+                clientes = clienteDao.buscarTodos();
+            } else {
+                clientes = clienteDao.buscarPorNome(termoPesquisa);
+            }
             
             if (clientes.isEmpty()) { // VERIFICA LISTA VAZIA
                 errorMsg.setText("Nenhum resultado encontrado para clientes.");
                 errorMsg.setForeground(java.awt.Color.BLUE);
             } else {
                 for (Cliente cli : clientes) {
-                    modelo.addRow(new Object[]{cli.getId(), cli.getNome(), cli.getCpf(), cli.getTelefone()});
+                    String cidade = (cli.getCidade() != null)
+                    ? cli.getCidade().getNome() + " - " + cli.getCidade().getUF()
+                    : null;
+                    modelo.addRow(new Object[]{cli.getId(), cli.getNome(), cli.getCpf(), cidade, cli.getTelefone(), cli.getEmail()});
                 }
             }
         }
@@ -297,7 +333,27 @@ public class Listar extends javax.swing.JFrame {
             this.dispose(); //fecha a tela de lista
             
         } else if ("CLIENTE".equals(this.tipoOrigemTela)) {
-            // Tem que implementar qnd add a tela de cliente
+                        // Pega os dados da linha clicada
+            long id = Long.parseLong(jTableResultados.getValueAt(linhaSelecionada, 0).toString());
+            String nome = (String) jTableResultados.getValueAt(linhaSelecionada, 1);
+            String cpf = (String) jTableResultados.getValueAt(linhaSelecionada, 2);
+            String telefone = (String) jTableResultados.getValueAt(linhaSelecionada, 4);
+            String email = (String) jTableResultados.getValueAt(linhaSelecionada, 5);
+
+            // Cria uma cidade com os dados
+            Cliente clienteEdit = new Cliente();
+            clienteEdit.setId(id);
+            clienteEdit.setNome(nome);
+            clienteEdit.setCpf(cpf);
+            clienteEdit.setTelefone(telefone);
+            clienteEdit.setEmail(email);
+
+            // Abre a TelaCidade enviando a cidade selecionada
+            TelaClientes tela = new TelaClientes(clienteEdit);
+            tela.setLocationRelativeTo(null);
+            tela.setVisible(true);
+            
+            this.dispose(); //fecha a tela de lista
         }
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 

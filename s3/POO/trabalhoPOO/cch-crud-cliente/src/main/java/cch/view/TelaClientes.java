@@ -3,13 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package cch.view;
+import cch.model.Cliente;
+import cch.model.ClienteDAO;
+import cch.model.CidadeDAO;
+import cch.model.Cidade;
+import java.util.List;
 
 /**
  *
  * @author User
  */
 public class TelaClientes extends javax.swing.JFrame {
-    
+    private Long idEdicao = null;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaClientes.class.getName());
 
     /**
@@ -17,6 +22,18 @@ public class TelaClientes extends javax.swing.JFrame {
      */
     public TelaClientes() {
         initComponents();
+    }
+
+    TelaClientes(Cliente clienteEdit) {
+        initComponents();
+
+        this.idEdicao = clienteEdit.getId(); 
+        this.cmpNome.setText(clienteEdit.getNome());
+        this.cmpCPF.setText(clienteEdit.getCpf());
+        this.cmpTelefone.setText(clienteEdit.getTelefone());
+        this.cmpEmail.setText(clienteEdit.getEmail()); 
+        this.jLabel1.setText("ALTERAR CIDADE");
+        this.bntCadastrar.setText("SALVAR");
     }
 
     /**
@@ -28,22 +45,200 @@ public class TelaClientes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        cmpNome = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        cmpCPF = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        cmpTelefone = new javax.swing.JTextField();
+        cmpCidade = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        cmpEmail = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        bntListar = new javax.swing.JButton();
+        bntCadastrar = new javax.swing.JButton();
+        erroNome = new javax.swing.JLabel();
+        erroCPF = new javax.swing.JLabel();
+        erroTelefone = new javax.swing.JLabel();
+        erroCadastro = new javax.swing.JLabel();
+        erroEmail = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
             }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
         });
+
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel1.setText("CADASTRO DE CLIENTES");
+        jLabel1.setName("Titulo"); // NOI18N
+
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados Do Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel2.setText("Nome:");
+        jLabel2.setName("nome"); // NOI18N
+
+        cmpNome.setName("cmpNome"); // NOI18N
+
+        jLabel3.setText("CPF:");
+        jLabel3.setName("cpf"); // NOI18N
+
+        cmpCPF.setName("cmpCPF"); // NOI18N
+        cmpCPF.addActionListener(this::cmpCPFActionPerformed);
+
+        jLabel4.setText("Telefone:");
+        jLabel4.setName("telefone"); // NOI18N
+
+        cmpTelefone.setName("cmpTelefone"); // NOI18N
+        cmpTelefone.addActionListener(this::cmpTelefoneActionPerformed);
+
+        cmpCidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmpCidade.setName("cmpCidade"); // NOI18N
+
+        jLabel5.setText("Cidade:");
+        jLabel5.setName("cidade"); // NOI18N
+
+        cmpEmail.setName("cmpEmail"); // NOI18N
+        cmpEmail.addActionListener(this::cmpEmailActionPerformed);
+
+        jLabel6.setText("Email:");
+        jLabel6.setName("Email"); // NOI18N
+
+        bntListar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        bntListar.setText("LISTAR");
+        bntListar.setName("bntListar"); // NOI18N
+        bntListar.addActionListener(this::bntListarActionPerformed);
+
+        bntCadastrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        bntCadastrar.setText("CADASTRAR");
+        bntCadastrar.setName("bntCadastrar"); // NOI18N
+        bntCadastrar.addActionListener(this::bntCadastrarActionPerformed);
+
+        erroNome.setForeground(new java.awt.Color(255, 0, 51));
+
+        erroCPF.setForeground(new java.awt.Color(255, 0, 51));
+
+        erroTelefone.setForeground(new java.awt.Color(255, 0, 51));
+
+        erroCadastro.setForeground(new java.awt.Color(255, 0, 51));
+
+        erroEmail.setForeground(new java.awt.Color(255, 0, 51));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(erroNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmpNome)
+                    .addComponent(cmpCidade, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmpEmail, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(erroCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3))
+                                .addGap(66, 66, 66))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(cmpCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(erroTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(cmpTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(erroCadastro)
+                                .addGap(410, 410, 410)
+                                .addComponent(erroEmail))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel6)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(123, 123, 123)
+                                .addComponent(bntListar)
+                                .addGap(18, 18, 18)
+                                .addComponent(bntCadastrar)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGap(16, 16, 16))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmpNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(erroNome)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmpTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmpCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(erroCPF)
+                    .addComponent(erroTelefone))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmpEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addGap(2, 2, 2)
+                .addComponent(cmpCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(erroEmail)
+                    .addComponent(erroCadastro))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bntCadastrar)
+                    .addComponent(bntListar))
+                .addGap(31, 31, 31))
+        );
+
+        cmpEmail.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(161, 161, 161)
+                        .addComponent(jLabel1)))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -53,6 +248,149 @@ public class TelaClientes extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_formWindowClosed
 
+    private void bntCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntCadastrarActionPerformed
+         if(Valida()) {
+            Cidade cidadeCliente = null;
+            CidadeDAO cidadeDAO = new CidadeDAO();
+            List<Cidade> cidades = cidadeDAO.buscarTodos();
+            
+            for (int i = 0; i < cidades.size(); i++) {
+                  String cidade = cidades.get(i).getNome() + " - " + cidades.get(i).getUF();
+                  if (cidade.equals(cmpCidade.getSelectedItem())) {
+                      cidadeCliente = cidades.get(i);
+                  }
+              }
+            
+            Cliente cliente = new Cliente(cmpNome.getText(), cmpCPF.getText(), cmpTelefone.getText(), cidadeCliente, cmpEmail.getText());     
+            try {
+                ClienteDAO clienteDAO = new ClienteDAO();
+                Boolean success = false;
+                
+                
+                if (idEdicao != null) {
+                    cliente.setId(idEdicao);
+                     success = clienteDAO.Alterar(cliente);
+                    
+                } else {
+                    success = clienteDAO.Cadastrar(cliente);
+                }
+                
+                if (success) {
+                    LimpaCampo();
+                    if (idEdicao != null) {
+                        erroCadastro.setText("ALTERADO COM SUCESSO!");
+                    } else {
+                        erroCadastro.setText("CADASTRADO COM SUCESSO!");
+                    }
+                    
+                } else {
+                   erroCadastro.setText("Não foi possível cadastrar tente novamente");
+                }
+                  
+            } catch (Exception e) {
+                erroCadastro.setText("ERRO ao realizar a chamada do banco " + e.getMessage());
+            }
+            
+        }
+    }//GEN-LAST:event_bntCadastrarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        cmpCidade.setModel(new javax.swing.DefaultComboBoxModel<>());
+        
+        CidadeDAO cidadeDAO = new CidadeDAO();
+        List<Cidade> cidades = cidadeDAO.buscarTodos();
+        
+        if (!cidades.isEmpty()) {
+            cmpCidade.addItem("SELECIONE UMA CIDADE");
+            for (int i =0; i < cidades.size(); i++) {
+                cmpCidade.addItem(cidades.get(i).getNome() + " - " + cidades.get(i).getUF());
+            }
+        } else {
+            cmpCidade.addItem("NÃO HÁ CIDADES CADASTRADAS");
+        }
+        
+    }//GEN-LAST:event_formWindowOpened
+
+    private void bntListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntListarActionPerformed
+        Listar telaListar = new Listar("CLIENTE");
+        telaListar.setLocationRelativeTo(this);
+        telaListar.setVisible(true);   
+    }//GEN-LAST:event_bntListarActionPerformed
+
+    private void cmpCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmpCPFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmpCPFActionPerformed
+
+    private void cmpTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmpTelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmpTelefoneActionPerformed
+
+    private void cmpEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmpEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmpEmailActionPerformed
+
+    private boolean Valida(){
+        erroNome.setText("");
+        erroCPF.setText("");
+        erroTelefone.setText("");
+        erroEmail.setText("");
+        
+
+        boolean valido = true;
+
+        if (cmpNome.getText().trim().isEmpty()) {
+            erroNome.setText("Informe o nome.");
+            valido = false;
+        }
+
+        String cpf = cmpCPF.getText().replace(".", "").replace("-", "").trim();
+
+        if (cpf.isEmpty()) {
+            erroCPF.setText("Informe o CPF.");
+            valido = false;
+        } else if (!cpf.matches("\\d{11}")) {
+            erroCPF.setText("CPF inválido.");
+            valido = false;
+        }
+
+        String telefone = cmpTelefone.getText()
+                .replace("(", "")
+                .replace(")", "")
+                .replace("-", "")
+                .replace(" ", "");
+
+        if (telefone.isEmpty()) {
+            erroTelefone.setText("Informe o telefone.");
+            valido = false;
+        } else if (!telefone.matches("\\d{10,11}")) {
+            erroTelefone.setText("Telefone inválido.");
+            valido = false;
+        }
+        if (cmpEmail.getText().trim().isEmpty()) {
+            erroEmail.setText("Informe o email.");
+            valido = false;
+        }
+        
+        if (cmpCidade.getSelectedItem().equals("SELECIONE UMA CIDADE")) {
+            erroCadastro.setText("SELECIONE UMA CIDADE VÁLIDA");
+            valido = false;
+        } else if (cmpCidade.getSelectedItem().equals("NÃO HÁ CIDADES CADASTRADAS")){
+            erroCadastro.setText("CADASTRE UMA CIDADE");
+            valido = false;
+        }
+
+        return valido;
+    }
+    
+    private void LimpaCampo() {
+        cmpNome.setText("");
+        cmpCPF.setText("");
+        cmpTelefone.setText("");
+        cmpCidade.setSelectedIndex(0);
+        cmpEmail.setText("");
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -79,5 +417,24 @@ public class TelaClientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bntCadastrar;
+    private javax.swing.JButton bntListar;
+    private javax.swing.JTextField cmpCPF;
+    private javax.swing.JComboBox<String> cmpCidade;
+    private javax.swing.JTextField cmpEmail;
+    private javax.swing.JTextField cmpNome;
+    private javax.swing.JTextField cmpTelefone;
+    private javax.swing.JLabel erroCPF;
+    private javax.swing.JLabel erroCadastro;
+    private javax.swing.JLabel erroEmail;
+    private javax.swing.JLabel erroNome;
+    private javax.swing.JLabel erroTelefone;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

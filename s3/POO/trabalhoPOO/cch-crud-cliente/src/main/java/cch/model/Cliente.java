@@ -4,10 +4,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.JoinColumn;
 
 @Entity
-@Table (name = "Cliente")
+@Table(name = "Cliente")
 public class Cliente{
     //atributos
     @Id
@@ -16,14 +18,19 @@ public class Cliente{
     private String nome;
     private String cpf;
     private String telefone;
-    private String cidade;//selecao tem que arrumar
-
+    private String email;
+    
+    @ManyToOne
+    @JoinColumn(name = "Id_Cidade")
+    private Cidade cidade;
+        
     //construtor
-    public Cliente(String nome, String cpf, String telefone, String cidade) {
+    public Cliente(String nome, String cpf, String telefone, Cidade cidade, String email) {
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
         this.cidade = cidade;
+        this.email = email;
     }
     public Cliente() {} // Construtor vazio criado para ser possível alterar o cadastro do cliente
     
@@ -49,10 +56,10 @@ public class Cliente{
         this.telefone = telefone;
     }
     
-    public String getCidade() {
+    public Cidade getCidade() {
         return cidade;
     }
-    public void setCidade(String cidade) {
+    public void setCidade(Cidade cidade) {
         this.cidade = cidade;
     }
     
@@ -61,5 +68,11 @@ public class Cliente{
     }
     public void setId(long id) {
         this.id = id; //método criado para ser possível alterar o cadastro do cliente
+    }
+    public String getEmail(){
+        return email;
+    }
+    public void setEmail(String email){
+        this.email = email;
     }
 }
