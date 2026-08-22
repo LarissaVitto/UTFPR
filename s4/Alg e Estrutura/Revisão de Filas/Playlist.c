@@ -29,18 +29,20 @@ Playlist *criarPlaylist() {
 
 void adicionarMusica(Playlist *p, Musica *m) {
     No *novo = (No *) malloc(sizeof(No));
-    if (p == NULL) return;
+    if (p == NULL || m == NULL) return;
     if (novo == NULL) return;
     novo->msc = *m;
-    novo->prox = NULL;
-    novo->ant = p->fim;
-
     if (p->inicio == NULL) {
+        novo->ant = novo;
+        novo->prox = novo;
         p->inicio = novo;
         p->fim = novo;
         p->atual = novo;
     } else {
+        novo->ant = p->fim;
+        novo->prox = p->inicio;
         p->fim->prox = novo;
+        p->inicio->ant = novo;
         p->fim = novo;
     }
     p->qtd++;
@@ -49,23 +51,17 @@ void adicionarMusica(Playlist *p, Musica *m) {
 void musicaAtual(Playlist *p) {
     if (p != NULL && p->atual != NULL) {
         printf("%s - %s\n", p->atual->msc.cantor, p->atual->msc.titulo);
-    } else {
-        return;
     }
 }
 
 void avancar(Playlist *p) {
-    if (p != NULL && p->atual != NULL && p->atual->prox != NULL) {
+    if (p != NULL && p->atual != NULL) {
         p->atual = p->atual->prox;
-    } else {
-        return;
     }
 }
 
 void retroceder(Playlist *p) {
-    if (p != NULL && p->atual != NULL && p->atual->ant != NULL) {
+    if (p != NULL && p->atual != NULL) {
         p->atual = p->atual->ant;
-    } else {
-        return;
     }
 }
