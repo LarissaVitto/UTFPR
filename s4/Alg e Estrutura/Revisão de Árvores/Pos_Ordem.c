@@ -27,6 +27,6 @@ void pos_ordem(No* raiz){
     if(raiz != NULL){
         pos_ordem(raiz->esquerda);
         pos_ordem(raiz->direita);
-        printf("%d ", raiz->chave);
+        printf("%d ", raiz->chave); //percorre toda a arvore depois imprime a raiz
     }
 }

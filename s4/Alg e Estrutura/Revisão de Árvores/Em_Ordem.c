@@ -26,7 +26,7 @@ No* inserir(No* raiz, int chave) {
 void em_ordem(No* raiz){
     if(raiz != NULL){
         em_ordem(raiz->esquerda);
-        printf("%d ", raiz->chave);
+        printf("%d ", raiz->chave); //precorre primeiro os menores dai a raiz e depois os maiores
         em_ordem(raiz->direita);
     }    
 }

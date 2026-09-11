@@ -36,7 +36,7 @@ No* inserir(No* raiz, int chave) {
 // Implemente a visitação em pré-ordem:
 void pre_ordem(No* raiz){ //Pré-ordem
     if(raiz != NULL){
-        printf("%d ", raiz->chave);
+        printf("%d ", raiz->chave);//imprime desde a raiz depois percorre o resto
         pre_ordem(raiz->esquerda);
         pre_ordem(raiz->direita);
     }
