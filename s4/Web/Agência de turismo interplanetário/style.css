@@ -1,0 +1,301 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", Arial, sans-serif;
+    background-color: #0b132b;
+    color: #e0e0e0;
+    box-sizing: border-box;
+
+}
+
+.cabecalho {
+    background-color: rgb(36, 40, 51);
+    padding: 20px 50px;    
+}
+
+.menu {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.menu a:link, 
+.menu a:visited {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu a:hover, 
+.menu a:focus {
+    color: #5bc0be;
+    text-decoration: underline;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+.container2{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 90px;
+}
+
+#titulo-principal {
+    color: #62e0de;
+    margin: 0;
+    border-bottom: none;
+}
+
+h2 {
+    color: #62e0de;
+    margin-top: 50px;
+    border-bottom: 2px solid #3a506b;
+    padding-bottom: 10px;
+}
+
+h4 {
+    color: #F72585;
+    font-weight: bold;
+}
+
+.card {
+    background-color: hsl(225, 40%, 18%);
+    margin: 20px 0;
+    max-width: 1300px;
+    padding: 30px;
+    border-radius: 2%;
+    box-sizing: border-box;
+}
+
+.destaque{
+    background-color: #0b3440;
+    border: 2px solid #5bc0be;
+}
+
+.card h3 {
+    margin-top: 0;
+    color: #ffffff;
+    font-size: 30px;
+}
+
+h5{
+    color: #62e0de;
+    font-size: 22px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.foto {
+    width: 300px;
+    height: auto;
+    border-radius: 2%;
+    margin: auto 0 0 20px;
+    border: 2px solid #5bc0be;
+    display: block;
+    margin: 20px auto;
+}
+
+.botao{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #5bc0be;
+    color: #ffffff;
+    text-decoration: none;
+    border-color: #5bc0be;
+    border-radius: 5px;
+}
+
+.tabela{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.tabela th, .tabela td, .tabela caption {
+    border: 1px solid #8892b0; 
+    padding: 8px;
+    text-align: center;
+}
+
+.tabela tbody tr:nth-child(odd) {
+    background-color: #0b132b; 
+}
+
+.tabela th:nth-child(5), 
+.tabela td:nth-child(5) {
+    background-color: #001141; 
+    color: #5bc0be; 
+    font-weight: bold;
+}
+
+caption {
+    caption-side: top;
+    color: #F72585;
+    font-weight: bold;
+}
+
+#reserva {
+    color: #62e0de;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3a506b;
+    padding-bottom: 10px;
+}
+
+
+form {
+    padding: 0;
+    margin: 0;
+}
+
+form label {
+    color: #e0e0e0;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="email"] {
+    width: 40%;
+    box-sizing: border-box;
+    background-color: #0b132b;
+    color: #ffffff;
+    border: 1px solid #8892b0;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+}
+
+form input[type="text"] {
+    margin-right: 20px;
+}
+
+form input[type="number"],
+form input[type="date"],
+form select {
+    background-color: #0b132b;
+    color: #ffffff;
+    border: 1px solid #8892b0;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+form label[for="dtp_inicio"] {
+    display: block;
+}
+
+form #destino {
+    width: 250px;
+    margin: 8px 25px 15px 8px;
+}
+
+form #viajantes {
+    width: 150px;
+    margin: 8px 25px 15px 8px;
+}
+
+form #dtp_inicio,
+form #dtp_fim {
+    margin: 8px 8px 15px 8px;
+}
+
+form textarea {
+    width: 100%;
+    min-height: 80px;
+    box-sizing: border-box;
+
+    background-color: #0b132b;
+    color: #ffffff;
+
+    border: 1px solid #8892b0;
+    border-radius: 5px;
+
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+
+    font-family: "Roboto", Arial, sans-serif;
+    resize: vertical;
+}
+
+form label[for="msg"] {
+    display: block;
+    margin-top: 5px;
+}
+
+form #classe {
+    margin: 8px 25px 15px 8px;
+    min-width: 150px;
+}
+
+form #termos {
+    margin-left: 8px;
+    accent-color: #5bc0be;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="number"]:focus,
+form input[type="date"]:focus,
+form select:focus,
+form textarea:focus {
+    outline: none;
+    border-color: #5bc0be;
+}
+
+form input::placeholder,
+form textarea::placeholder {
+    color: #8892b0;
+}
+
+form input[type="submit"],
+form input[type="reset"] {
+    padding: 10px 22px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+form input[type="submit"] {
+    background-color: #5bc0be;
+    color: #0b132b;
+}
+
+form input[type="reset"] {
+    background-color: #3a506b;
+    color: #ffffff;
+    margin-left: 5px;
+}
+
+form input[type="submit"]:hover {
+    background-color: #62e0de;
+}
+
+form input[type="reset"]:hover {
+    background-color: #8892b0;
+}
+footer {
+    text-align: center;
+    padding: 2px;
+    background-color: #242833;
+    color: #8892b0;
+    font-style: italic;
+}
