@@ -1,0 +1,54 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: #10004b;
+}
+
+.grid-container {
+    width: 100%;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 10px;
+    text-align: center;
+    padding: 10px;
+    color: white;
+}
+
+.grid-container > div {
+    background-color: #5e9eff;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.grid-um {
+    grid-column: span 1;
+}
+
+.grid-dois {
+    grid-column: span 2;
+}
+
+.grid-tres {
+    grid-column: span 3;
+}
+
+.grid-quatro {
+    grid-column: span 4;
+}
+
+.grid-seis {
+    grid-column: span 6;
+}
+
+.grid-oito {
+    grid-column: span 8;
+}
+
+.grid-doze {
+    grid-column: span 12;
+}

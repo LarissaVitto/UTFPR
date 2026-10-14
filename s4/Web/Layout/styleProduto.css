@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: #10004b;
+    font-weight: bold;
+}
+
+.grid-template-areas {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 80%;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 10px;
+    padding: 10px;
+    padding-top: 20px;
+    color: #000000;
+}
+
+.grid-template-areas > div {
+    min-height: 50px;
+    padding: 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
+
+.grid-verde {
+    grid-column: span 12;
+    background-color: #3dff3d;
+}
+
+.grid-amarelo {
+    grid-column: span 6;
+    background-color: #ffff66;
+}
+
+.grid-azul-claro {
+    grid-column: span 6;
+    background-color: #87cfff;
+}
+
+.grid-roxo {
+    grid-column: span 6;
+    grid-row: span 3;
+    background-color: #6e0099;
+    color: #ffffff;
+}
+
+.grid-cinza {
+    grid-column: span 6;
+    background-color: #b9b9b9;
+    color: #000000;
+}
+
+.grid-azul-escuro {
+    grid-column: span 3;
+    background-color: #000082;
+    color: #ffffff;
+}
+
+.grid-laranja {
+    grid-column: span 3;
+    background-color: #ff7f00;
+}
+
+.grid-cinza-claro {
+    grid-column: span 3;
+    background-color: #e6e6e6;
+}
+
+.grid-vermelho {
+    grid-column: span 3;
+    background-color: #b90000;
+    color: #ffffff;
+}
