@@ -1,49 +1,19 @@
+/* Variaveis */
 :root {
     --cor_fundo: #0F1115;
     --cor_fundo2: #021039;
     --cor_texto: #FFFFFF;
+    --cor_foco: #5bc0be;
     --fonte-principal: 'Arial', sans-serif;
     --tamanho-base: 16px;
 }
 
-/* MUDANÇA 1: Adicionei 'body' aqui para o Bootstrap não impor o fundo branco */
 html, body {
   font-size: var(--tamanho-base);
   font-family: var(--fonte-principal);
   scroll-behavior: smooth;
   background-color: var(--cor_fundo);
   color: var(--cor_texto);
-}
-
-.carousel-multiple .carousel-inner {
-    display: flex;
-    gap: var(--bs-carousel-items-gap);
-}
-
-.carousel-multiple .carousel-item {
-    flex: 0 0 calc((100% - (var(--bs-carousel-items-gap) * (var(--bs-carousel-items) - 1))) / var(--bs-carousel-items));
-    display: block;
-    margin-right: 0;
-}
-
-/* MUDANÇA 2: Ajuste de tamanho para espelhar o retângulo vermelho que desenhou */
-.img-cover {
-    object-fit: cover;
-    width: 100%; /* Medida fluida para acompanhar o carrossel (responsivo) */
-    height: 220px; /* Altura ideal para ficar grande na tela */
-    border-radius: 20px; /* Bordas arredondadas como nos seus designs */
-}
-
-/* MUDANÇA 3: Media Queries para responsividade. Ajusta o nº de itens mostrados de acordo com o ecrã */
-@media (max-width: 768px) {
-    .carousel-multiple {
-        --bs-carousel-items: 2 !important; /* Mostra 2 itens em tablets */
-    }
-}
-@media (max-width: 500px) {
-    .carousel-multiple {
-        --bs-carousel-items: 1 !important; /* Mostra 1 item em telemóveis */
-    }
 }
 
 .logo {
@@ -72,13 +42,6 @@ html, body {
 
 .menu a:hover, 
 .menu a:focus {
-    color: #5bc0be;
+    color: var(--cor_foco);
     text-decoration: underline;
-}
-
-.jogos {
-    display: block; 
-    padding: 20px;
-    background-color: var(--cor_fundo);
-    color: var(--cor_texto);
 }
