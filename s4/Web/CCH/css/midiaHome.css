@@ -1,0 +1,94 @@
+
+.detalhes-midia {
+    padding: 25px;
+    background-color: var(--cor_fundo);
+    color: var(--cor_texto);
+    border-radius: 15px;
+}
+
+/* titulo */
+.titulo-midia {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+/* imagem da midia */
+.imagem-midia {
+    width: 100%;
+    max-width: 350px;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* informacoes */
+.detalhes-midia h3 {
+    margin-bottom: 20px;
+}
+
+.detalhes-midia p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* campo de avaliacao */
+.detalhes-midia textarea {
+    border-radius: 10px;
+    resize: vertical;
+}
+
+/* botoes */
+.btn-avaliar,
+.btn-desejos,
+.btn-voltar {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    text-decoration: none;
+}
+
+.btn-avaliar {
+    background-color: var(--cor_destaque);
+    color: white;
+}
+
+.btn-avaliar:hover {
+    opacity: 0.85;
+}
+
+.btn-desejos {
+    background-color: var(--cor_destaque);
+    color: white;
+}
+
+.btn-desejos:hover {
+    opacity: 0.85;
+    color: white;
+}
+
+.btn-voltar {
+    background-color: var(--cor_destaque);
+    color: white;
+}
+
+.btn-voltar:hover {
+    opacity: 0.85;
+    color: white;
+}
+
+/* adaptacao para celulares */
+@media (max-width: 768px) {
+    .detalhes-midia {
+        padding: 15px;
+    }
+
+    .imagem-midia {
+        max-width: 280px;
+        height: auto;
+    }
+
+    .detalhes-midia h3 {
+        margin-top: 15px;
+    }
+}

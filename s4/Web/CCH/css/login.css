@@ -1,13 +1,9 @@
-/* página de login */
-
 .login {
     padding: 30px;
     max-width: 500px;
     background-color: var(--cor_fundo);
     color: var(--cor_texto);
 }
-
-/* campos */
 
 .login input {
     width: 100%;
@@ -16,8 +12,6 @@
     border-radius: 10px;
     margin-top: 5px;
 }
-
-/* botão */
 
 .login button {
     width: 100%;
@@ -32,10 +26,8 @@
     background-color: #66657c;
 }
 
-/* link */
-
 .login a {
-    color: #66657c;
+    color: var(--cor_foco);
     text-decoration: none;
 }
 

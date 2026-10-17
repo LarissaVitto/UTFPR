@@ -17,7 +17,10 @@
 }
 
 /* Tags */
-.tag-salmao, .tag-roxo, .tag-azul, .tag-verde {
+.tag-salmao,
+.tag-roxo,
+.tag-azul,
+.tag-verde {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -40,7 +43,7 @@
 }
 
 .tag-azul {
-    background-color: #9ef7ff; 
+    background-color: #9ef7ff;
     color: #000000;
     border: 2px solid #006bae;
 }
@@ -49,4 +52,90 @@
     background-color: #9effe0;
     color: #000000;
     border: 2px solid #00bd7e;
+}
+
+/* --- Carrossel do Perfil, tem o estilo menor --- */
+
+.carrossel-perfil {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding-bottom: 10px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #495057 transparent;
+}
+
+/* Barra de rolagem navegador */
+.carrossel-no-js::-webkit-scrollbar {
+    height: 6px;
+}
+
+.carrossel-perfil::-webkit-scrollbar-thumb {
+    background-color: #495057;
+    border-radius: 10px;
+}
+
+.carrossel-perfil::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.item-carrossel {
+    flex: 0 0 auto;
+}
+
+/* Tamanho das capas iguais */
+.capa-favoritos {
+    width: 100px;
+    height: 140px;
+    object-fit: cover;
+}
+
+/* Capas dos recentes mais larga para diferenciar */
+.capa-recentes {
+    width: 200px;
+    height: 120px;
+    object-fit: cover;
+}
+
+/*Crds de Estatísticas */
+
+.card-estatistica {
+    background-color: #16181c;
+    padding: 0.75rem;
+}
+
+.card-estatistica-icone {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.card-estatistica-numero {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.card-estatistica-texto {
+    font-size: 0.75rem;
+    color: #6c757d; 
+}
+
+.titulo-meta {
+    font-size: 0.85rem;
+}
+
+.barra-progresso-container {
+    height: 10px;
+}
+
+.diminui {
+    align-items: center;
+    max-width: 1020px;
+    margin: 0 auto;
+}
+
+.central_titulo {
+    text-align: center;
 }

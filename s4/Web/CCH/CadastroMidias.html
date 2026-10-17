@@ -1,28 +1,108 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title> Your Midia List - Cadastro de Mídias</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro de Mídia - Your Midia List</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cadastroMidias.css">
 </head>
 
 <body>
-    <h1>Your Midia List</h1>
-    <a href="Home.html">
-        <header>Home</header>
-    </a>
-    <a href="ListaDeDesejos.html">
-        <header>Lista de Desejos</header>
-    </a>
-    <h2>Sobre o evento:</h2>
-    <a href="https://www.utfpr.edu.br/">
-        <img width="350" height="200" alt="Tecnologia"
-            src="https://forbes.com.br/wp-content/uploads/2024/01/Tech_tecnologias2024_divulgacao.jpg">
-        <p>Link para o site da UTFPR</p>
-    </a>
-    
-    <footer class="text-center mt-5 mb-3">
-        <p>&copy; 2026 - Your Midia List</p>
+
+    <!-- MENU-->
+    <nav class="menu">
+        <a href="Home.html">
+            <img src="img/logo.png" alt="Logo Your Midia List" class="logo">
+        </a>
+
+        <a href="Perfil.html">Perfil</a>
+    </nav>
+
+    <!-- CADASTRO-->
+    <main class="container-cadastro">
+
+        <h1>Cadastrar Mídia</h1>
+
+        <p>Adicione uma nova mídia à plataforma!</p>
+
+        <!-- fORMULARIO-->
+        <form class="formulario" action="#" method="post">
+
+            <div class="campo">
+                <label for="titulo">Título:</label>
+                <input
+                    type="text"
+                    id="titulo"
+                    name="titulo"
+                    placeholder="Digite o título da mídia"
+                    required>
+            </div>
+
+            <div class="campo">
+                <label for="tipo">Tipo de mídia:</label>
+                <select id="tipo" name="tipo" required>
+                    <option value="">Selecione uma opção</option>
+                    <option value="anime">Anime</option>
+                    <option value="jogo">Jogo</option>
+                    <option value="manga">Mangá</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="genero">Gênero:</label>
+                <input
+                    type="text"
+                    id="genero"
+                    name="genero"
+                    placeholder="Ex.: RPG, Shounen, Aventura"
+                    required>
+            </div>
+
+            <div class="campo">
+                <label for="ano">Ano de lançamento:</label>
+                <input
+                    type="number"
+                    id="ano"
+                    name="ano"
+                    placeholder="Ex.: 2025"
+                    min="1900"
+                    max="2100">
+            </div>
+
+            <div class="campo">
+                <label for="capa">Link da capa:</label>
+                <input
+                    type="url"
+                    id="capa"
+                    name="capa"
+                    placeholder="https://exemplo.com/capa.jpg">
+            </div>
+
+            <div class="campo">
+                <label for="descricao">Descrição:</label>
+                <textarea
+                    id="descricao"
+                    name="descricao"
+                    placeholder="Descreva a obra, sua história ou suas características"
+                    required></textarea>
+            </div>
+
+            <!-- Botões -->
+            <div class="botoes">
+                <button type="submit">Cadastrar</button>
+                <button type="reset">Limpar</button>
+            </div>
+
+        </form>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 Your Midia List</p>
     </footer>
 
 </body>
