@@ -1,0 +1,124 @@
+.titulo-lista {
+    padding: 30px;
+    margin-bottom: 40px;
+    background-color: var(--cor_fundo);
+    color: var(--cor_texto);
+    border-radius: 15px;
+}
+
+.titulo-lista h1 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.titulo-lista p {
+    margin-bottom: 0;
+}
+
+.titulo-categoria {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #66657c;
+    color: var(--cor_texto);
+}
+
+.lista {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.item-lista {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+    border: 1px solid #d8d4ff;
+    border-radius: 12px;
+    background-color: var(--cor_fundo);
+    color: var(--cor_texto);
+    transition: transform 0.3s ease;
+}
+
+.item-lista:hover {
+    transform: translateX(5px);
+}
+
+.item-lista img {
+    width: 65px;
+    height: 85px;
+    object-fit: cover;
+    border: 2px solid #66657c;
+    border-radius: 8px;
+}
+
+
+.informacoes {
+    flex: 1;
+}
+
+.informacoes h5 {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.informacoes p {
+    margin-bottom: 8px;
+}
+
+.status {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #eeeaff;
+    color: #66657c;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+.status.concluido {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.botao-concluido {
+    padding: 8px 12px;
+    background-color: #66657c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.botao-concluido:hover {
+    background-color: #66657c;
+}
+
+@media (max-width: 576px) {
+    .titulo-lista h1 {
+        font-size: 24px;
+    }
+
+    .item-lista {
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .item-lista img {
+        width: 70px;
+        height: 95px;
+    }
+
+    .informacoes h5 {
+        font-size: 14px;
+    }
+
+    .informacoes p {
+        font-size: 13px;
+    }
+
+    .botao-concluido {
+        padding: 6px;
+        font-size: 12px;
+    }
+}

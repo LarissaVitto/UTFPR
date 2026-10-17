@@ -10,7 +10,43 @@
 }
 
 .botao:hover {
-    background-color: #5bc0be;;
+    background-color: #5bc0be;
+    ;
     color: var(--cor_texto);
     border-color: var(--cor_texto);
+}
+
+/* Tags */
+.tag-salmao, .tag-roxo, .tag-azul, .tag-verde {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    font-size: 11px;
+    padding: 4px 10px;
+    font-weight: bold;
+}
+
+.tag-salmao {
+    background-color: #ff928b;
+    color: #ffffff;
+    border: 2px solid #ffb4af;
+}
+
+.tag-roxo {
+    background-color: #6a00ff;
+    color: #ffffff;
+    border: 2px solid #1c0062;
+}
+
+.tag-azul {
+    background-color: #9ef7ff; 
+    color: #000000;
+    border: 2px solid #006bae;
+}
+
+.tag-verde {
+    background-color: #9effe0;
+    color: #000000;
+    border: 2px solid #00bd7e;
 }

@@ -1,0 +1,37 @@
+
+.cadastro {
+    padding: 30px;
+    max-width: 500px;
+    background-color: var(--cor_fundo);
+    color: var(--cor_texto);
+}
+
+.cadastro input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    margin-top: 5px;
+}
+
+.cadastro button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #66657c;
+    color: white;
+}
+
+.cadastro button:hover {
+    background-color: #66657c;
+}
+
+.cadastro a {
+    color: #66657c;
+    text-decoration: none;
+}
+
+.cadastro a:hover {
+    text-decoration: underline;
+}
