@@ -77,6 +77,19 @@ void liberarTabela(TabelaHash* tabela) {
     }
 }
 
+            void BuscarAlunopoRA(TabelaHash* tabela, int ra) {
+                int indice = funcaoHash(ra);
+                Aluno* aux = tabela->registros[indice];
+                while (aux != NULL) {
+                    if (aux->ra == ra) {
+                        printf("Aluno encontrado: RA: %d, Nome: %s\n", aux->ra, aux->nome);
+                        return;
+                    }
+                    aux = aux->prox;
+                }
+                printf("Aluno com RA %d nao encontrado.\n", ra);
+            }
+
 int main() {
     TabelaHash tabela;
     inicializarTabela(&tabela);
