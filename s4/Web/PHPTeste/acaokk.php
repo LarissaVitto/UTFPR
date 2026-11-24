@@ -22,8 +22,6 @@
         echo "<br/>Hash da senha: "
         . htmlspecialchars($hash, ENT_QUOTES, "UTF-8");
     ?>
-
-    ?>
 </body>
 
 </html>
