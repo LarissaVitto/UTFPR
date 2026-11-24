@@ -16,10 +16,10 @@ void teste_1() {
             verificarRotaAlternativa(&g, 'A', 'C', 'B'));
 }
 
-int verificarRotaDireta{
-    
+int verificarRotaDireta(Grafo *g, char origem, char destino) {
+    return g->matriz[origem - 'A'][destino - 'A'];
 }
 
-int verificaRotaAlternativa{
-
+int verificarRotaAlternativa(Grafo *g, char origem, char meio, char destino) {
+    return g->matriz[origem - 'A'][meio - 'A'] + g->matriz[meio - 'A'][destino - 'A'];
 }
